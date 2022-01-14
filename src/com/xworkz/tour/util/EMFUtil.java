@@ -13,7 +13,7 @@ public class EMFUtil {
 
 	static {
 		System.out.println("invoking factory");
-		enityManagerFactory = Persistence.createEntityManagerFactory("com..xworkz.tour");
+		enityManagerFactory = Persistence.createEntityManagerFactory("com.xworkz.tour");
 		System.out.println("init values to db");
 	}
 

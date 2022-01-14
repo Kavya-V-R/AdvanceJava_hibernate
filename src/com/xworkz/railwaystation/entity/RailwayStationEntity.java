@@ -18,7 +18,7 @@ public class RailwayStationEntity {
 	private String src;
 	@Column(name="r_dest")
 	private String dest;
-	
+	@Column(name="r_price")
 	private int price;
 	public RailwayStationEntity() {
 		super();
