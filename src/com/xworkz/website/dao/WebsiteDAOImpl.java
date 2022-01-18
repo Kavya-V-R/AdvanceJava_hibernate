@@ -12,27 +12,27 @@ import com.xworkz.website.entity.WebsiteEntity;
 public class WebsiteDAOImpl implements WebsiteDAO {
 
 	@Override
-	public void save(List<WebsiteEntity> entity) {
+	public void putall(List<WebsiteEntity> entity) {
 		EntityManager manager = EMFUtil.getEntityManagerFactory().createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		transaction.begin();
 		int flushcount = 0;
 		try {
 			for (WebsiteEntity websiteEntity : entity) {
-				manager.flush();
-				flushcount = 0;
+				manager.persist(websiteEntity);
+				if (flushcount == 10) {
+					manager.flush();
+					flushcount = 0;
+				}
 				manager.clear();
 				flushcount++;
 			}
-			transaction.commit();
 
 		} catch (PersistenceException e) {
 			e.getMessage();
 			transaction.rollback();
 		}
+		transaction.commit();
 	}
 
-		
-	}
-
-
+}

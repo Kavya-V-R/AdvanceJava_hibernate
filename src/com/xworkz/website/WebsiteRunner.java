@@ -31,6 +31,6 @@ public class WebsiteRunner {
 		websiteEntities.add(new WebsiteEntity("HackerRank", ".com", "hackerrank.com", "vivek", 2012));
 		websiteEntities.add(new WebsiteEntity("Uber", ".com", "uber.com", "Garrett,Oscar,Tavis", 2009));
 		WebsiteDAO dao = new WebsiteDAOImpl();
-		dao.save(websiteEntities);
+		dao.putall(websiteEntities);
 	}
 }

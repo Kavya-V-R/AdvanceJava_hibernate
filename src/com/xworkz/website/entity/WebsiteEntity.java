@@ -2,13 +2,19 @@ package com.xworkz.website.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "website_details")
 
 public class WebsiteEntity {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "w_id")
+	private int id;
 	@Column(name = "w_name")
 	private String name;
 	@Column(name = "w_domain")
@@ -19,6 +25,7 @@ public class WebsiteEntity {
 	private String owner;
 	@Column(name = "w_since")
 	private int since;
+
 	public WebsiteEntity(String name, String domain, String url, String owner, int since) {
 		super();
 		this.name = name;
@@ -27,40 +34,52 @@ public class WebsiteEntity {
 		this.owner = owner;
 		this.since = since;
 	}
+
 	public WebsiteEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDomain() {
 		return domain;
 	}
+
 	public void setDomain(String domain) {
 		this.domain = domain;
 	}
+
 	public String getUrl() {
 		return url;
 	}
+
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
 	public String getOwner() {
 		return owner;
 	}
+
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
+
 	public int getSince() {
 		return since;
 	}
+
 	public void setSince(int since) {
 		this.since = since;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -72,6 +91,7 @@ public class WebsiteEntity {
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -105,6 +125,7 @@ public class WebsiteEntity {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "WebsiteEntity [name=" + name + ", domain=" + domain + ", url=" + url + ", owner=" + owner + ", since="
