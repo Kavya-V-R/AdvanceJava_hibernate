@@ -1,14 +1,16 @@
 package com.xworkz.website.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "website_details")
+
+@NamedQueries({ @NamedQuery(name = "getByNameGoogle", query = " from WebsiteEntity web where web.name='Google'"),
+		@NamedQuery(name = "getByLikeUrlx", query = "  from WebsiteEntity web where web.url like 'https://www.g%'"),
+		@NamedQuery(name = "getByMinSince", query = "select  min(since) from WebsiteEntity"),
+		@NamedQuery(name = "getByMaxSince", query = "select max(since) from WebsiteEntity"),
+		@NamedQuery(name = "getBySecondMinSince", query = "select since,max(since) from WebsiteEntity where since in(select max(since) from WebsiteEntity)"),
+		@NamedQuery(name = "getBySecondMaxSince", query = "select since,min(since) from WebsiteEntity where since in(select min(since) from WebsiteEntity)") })
 
 public class WebsiteEntity {
 	@Id
