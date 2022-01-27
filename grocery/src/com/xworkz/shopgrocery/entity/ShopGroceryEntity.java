@@ -27,6 +27,8 @@ public class ShopGroceryEntity implements Serializable {
 	private String name;
 	@Column(name = "s_mailId")
 	private String mailId;
+	@Column(name = "s_password")
+	private String password;
 	@Column(name = "s_mobNumber")
 	private long mobNumber;
 	@Column(name = "s_address")
@@ -52,12 +54,13 @@ public class ShopGroceryEntity implements Serializable {
 	@Column(name = "s_updatedAt")
 	private LocalDateTime updatedAt;
 
-	public ShopGroceryEntity(String name, String mailId, long mobNumber, String address, String city, String state,
-			int pincode, String groceryName, String brand, float quantity, String createdBy, LocalDateTime createdAt,
-			String updatedBy, LocalDateTime updatedAt) {
+	public ShopGroceryEntity(String name, String mailId, String password, long mobNumber, String address, String city,
+			String state, int pincode, String groceryName, String brand, float quantity, String createdBy,
+			LocalDateTime createdAt, String updatedBy, LocalDateTime updatedAt) {
 		super();
 		this.name = name;
 		this.mailId = mailId;
+		this.password = password;
 		this.mobNumber = mobNumber;
 		this.address = address;
 		this.city = city;

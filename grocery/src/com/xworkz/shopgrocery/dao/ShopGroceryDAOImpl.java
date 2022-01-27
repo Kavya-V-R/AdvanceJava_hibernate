@@ -25,6 +25,7 @@ public class ShopGroceryDAOImpl implements ShopGroceryDAO {
 						manager.flush();
 						flushcount = 0;
 						manager.clear();
+						transaction.commit();
 					}
 					flushcount++;
 				}
@@ -32,7 +33,6 @@ public class ShopGroceryDAOImpl implements ShopGroceryDAO {
 				e.printStackTrace();
 				transaction.rollback();
 			}
-			transaction.commit();
 		}
 	}
 
@@ -43,11 +43,11 @@ public class ShopGroceryDAOImpl implements ShopGroceryDAO {
 		try {
 			manager.getTransaction().begin();
 			manager.persist(entity);
+			manager.getTransaction().commit();
 
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 		} finally {
-			manager.getTransaction().commit();
 
 		}
 
