@@ -11,10 +11,14 @@ import com.xworkz.service.VendorServiceImpl;
 public class VendorTester {
 	public static void main(String[] args) {
 
-		VendorEntity entity = new VendorEntity("kavya", "kavyarlingappa@gmal.com", "Kavya V R", "Kavyavr123", "Sira",
-				"mjghtrg257111", "kavyavr", LocalDateTime.now(), "kavyavr", LocalDateTime.now());
+		VendorEntity entity = new VendorEntity("Mamatha", "mamatharlingappa@gmal.com", "Mamatha R", "Mamathar46",
+				"Kittdal", "dhyfms587g4gj", "mamathar", LocalDateTime.now(), "mamathar", LocalDateTime.now());
 		VendorDAO dao = new VendorDAOImpl();
 		VendorService service = new VendorServiceImpl(dao);
-		service.validateAndSave(entity);
+		//service.validateAndSave(entity);
+
+		// boolean valid=service.validateLoginNameandPassword("Kavyagbrbgbg R",
+		// "Kavyavr123");
+		service.validateAndChangePassword("mamatharlingappa@gmal.com", "Mamatha@1998");
 	}
 }

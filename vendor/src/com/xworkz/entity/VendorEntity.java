@@ -10,6 +10,13 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "vendor_details")
+
+@NamedQueries({
+		@NamedQuery(name = "findLoginName", query = "select vendor from VendorEntity vendor where vendor.loginName=:ln and vendor.password=:pwd"),
+		@NamedQuery(name = "findByEmail", query = "select vendor from VendorEntity vendor where vendor.email=:em"),
+		@NamedQuery(name = "updatePasswordByEmail", query = "update VendorEntity set password=:setpwd where email=:em") 
+		})
+
 public class VendorEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +42,7 @@ public class VendorEntity {
 	private String updatedBy;
 	@Column(name = "v_updatedAt")
 	private LocalDateTime updatedAt;
+
 	public VendorEntity(String name, String email, String loginName, String password, String address, String gstNumber,
 			String createdBy, LocalDateTime createdAt, String updatedBy, LocalDateTime updatedAt) {
 		super();
